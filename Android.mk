@@ -13,6 +13,7 @@
 # limitations under the License.
 #
 
+<<<<<<< HEAD
 ifeq ($(TARGET_DEVICE),a11)
 
 LOCAL_PATH := $(call my-dir)
@@ -75,4 +76,14 @@ $(WCNSS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_SYMLINKS)
 
+=======
+# This is a quick hack to allow building a bootimage quickly without
+# needing to parse all the makefiles in the tree.
+# 'mmm mka vendor/cde/bootimage'
+# Is MUCH, MUCH faster than 'mka bootimage'
+
+# Guard so that it isn't included in builds not invoked via mm/mmm
+ifneq ($(ONE_SHOT_MAKEFILE),)
+ALL_MODULES += kernel
+>>>>>>> b890e0510f0234f5d5acae62ce6e5fdc0a0c44d5
 endif
